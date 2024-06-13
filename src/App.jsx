@@ -1,14 +1,19 @@
-import "./App.css";
+// import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MoviesPage from "./pages/MoviesPage";
+import NavHeader from "./Navigation/NavHeader";
 
 const App = () => {
   return (
     <div>
+      <NavHeader/>
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
-        <Route path="/movies" element={<div>Movies</div>} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/movies" element={<MoviesPage/>} />
       </Routes>
     </div>
+  
   )
 }
 export default App;
