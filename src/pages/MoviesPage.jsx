@@ -4,7 +4,7 @@ import { searchMoviesApi } from "../api/movies-api";
 const MoviesPage = () => {
   useEffect(() => {
     const getData = async () => {
-      const data = await searchMoviesApi();
+      const data = await searchMoviesApi('taxi');
     };
     getData();
   }, []);
