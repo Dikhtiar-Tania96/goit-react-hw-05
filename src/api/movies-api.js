@@ -7,9 +7,8 @@ export const searchMoviesApi = async (query) => {
   const {data} = await axios.get(`/search/movie`, {
     params: {
       query,
-      language: "en",
-      page: 1,
-    },
+      language: "en"
+        },
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
