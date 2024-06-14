@@ -4,7 +4,7 @@ const API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWZhYTQwMWMyODBhNTgzZTFmMzE2
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 export const searchMoviesApi = async (query) => {
-  const {data} = await axios.get(`/search/movies`, {
+  const {data} = await axios.get(`/search/movie`, {
     params: {
       query,
       language: "en",
