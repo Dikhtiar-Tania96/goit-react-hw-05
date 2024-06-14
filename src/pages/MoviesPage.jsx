@@ -1,13 +1,13 @@
-// import { useEffect } from "react";
-// import { searchMoviesApi } from "../api/movies-api";
+import { useEffect } from "react";
+import { searchMoviesApi } from "../api/movies-api";
 
 const MoviesPage = () => {
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const data = await searchMoviesApi();
-  //   };
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await searchMoviesApi();
+    };
+    getData();
+  }, []);
 
   return <div>MoviesPage</div>;
 };
