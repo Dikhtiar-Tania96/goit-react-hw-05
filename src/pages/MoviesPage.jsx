@@ -12,30 +12,33 @@ const MoviesPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await searchMoviesApi('car');
+        const data = await searchMoviesApi("car");
         setMovies(data);
       } catch (error) {
         setError(true);
       } finally {
-        setLoading(false)
-       }
-    }
-    getData()
+        setLoading(false);
+      }
+    };
+    getData();
   }, []);
 
   return (
     <div>
       <ul>
-      {movies.length > 0 &&
-        movies.map((movie) => {
-          return ( <div key={movie.id}>
-            <li><h2><b>{movie.title}</b></h2>
-            <p>{movie.popularity}</p>
-            <Link to={String(movie.id)}>Details</Link>
-            </li>
-          </div>)
-        })}
-        </ul>
+        {movies.length > 0 &&
+          movies.map((movie) => {
+            return (
+              <div key={movie.id}>
+                <li>
+                  <h2><b>{movie.title}</b></h2>
+                  <p>{movie.popularity}</p>
+                  <Link to={String(movie.id)}>Details</Link>
+                </li>
+              </div>
+            );
+          })}
+      </ul>
     </div>
   );
 };

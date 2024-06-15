@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { searchMoviesApi } from "../api/movies-api";
 
 const MovieDetailsPage = () => {
@@ -17,22 +17,23 @@ const MovieDetailsPage = () => {
       } catch (error) {
         setError(true);
       } finally {
-        setLoading(false)
-       }
-    }
-    getData()
+        setLoading(false);
+      }
+    };
+    getData();
   }, [movieId]);
 
   return (
     <div>
-        {/* (movie && <ul>
-            <h2>title: {movie.title}</h2>
-            <p>release date: {movie.release_date}</p>
-            <h4>popularity: {movie.popularity}</h4>
-            <Link>Details</Link>
-            </ul>) */}
+      {movie && (
+        <ul>
+          <h2>title: {movie.title}</h2>
+          <p>release date: {movie.release_date}</p>
+          <h4>popularity: {movie.popularity}</h4>
+        </ul>
+      )}
     </div>
-  )
+  );
 };
 
 export default MovieDetailsPage;
