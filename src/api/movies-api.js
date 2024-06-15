@@ -17,6 +17,11 @@ export const searchMoviesApi = async (query) => {
   return data.results;
 };
 
+// export const searchMovieIdApi = async movieId=> {
+//     const {data} = await axios.get(`/movies/${movieId}`)
+//     return data
+// }
+
 export const searchMovieIdApi = async movieId => 
     searchMoviesApi(`/movie/${movieId}`);
     

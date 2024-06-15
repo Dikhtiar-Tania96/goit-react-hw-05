@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { searchMoviesApi } from "../api/movies-api";
+import { searchMovieIdApi } from "../api/movies-api";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -12,7 +12,7 @@ const MovieDetailsPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await searchMoviesApi(movieId);
+        const data = await searchMovieIdApi(movieId);
         setMovie(data);
       } catch (error) {
         setError(true);
