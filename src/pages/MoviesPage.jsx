@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { searchMoviesApi } from "../api/movies-api";
+import { Link } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -28,7 +29,9 @@ const MoviesPage = () => {
         movies.map((movie) => {
           return ( <div  key={movie.id}>
             <li><h2><b>{movie.title}</b></h2>
-            <p>{movie.popularity}</p></li>
+            <p>{movie.popularity}</p>
+            <Link>Details</Link>
+            </li>
           </div>)
         })}
         </ul>
