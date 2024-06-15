@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { searchMoviesApi } from "../api/movies-api";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MoviesPage = () => {
+  const { movieId } = useParams();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -11,7 +12,7 @@ const MoviesPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await searchMoviesApi("car");
+        const data = await searchMoviesApi('car');
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -30,7 +31,7 @@ const MoviesPage = () => {
           return ( <div  key={movie.id}>
             <li><h2><b>{movie.title}</b></h2>
             <p>{movie.popularity}</p>
-            <Link>Details</Link>
+            <Link to={`/${movieId}`}>Details</Link>
             </li>
           </div>)
         })}
