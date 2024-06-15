@@ -13,6 +13,7 @@ export const searchMoviesApi = async (query) => {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
-  });git s
+  });
+  return data.result;
 };
 
