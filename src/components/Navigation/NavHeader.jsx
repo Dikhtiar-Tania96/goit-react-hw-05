@@ -9,10 +9,10 @@ const getClassNames = ({isActive})=>{
 const NavHeader = () => {
   return (
     <nav>
-      <NavLink className={getClassNames} to="/">
+      <NavLink className={getClassNames} to="/movies">
         Home
       </NavLink>
-      <NavLink className={getClassNames} to="/movies">
+      <NavLink className={getClassNames} to="/">
         Movies
       </NavLink>
     </nav>

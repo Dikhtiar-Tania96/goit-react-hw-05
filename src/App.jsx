@@ -1,9 +1,9 @@
 // import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import MoviesPage from "./pages/MoviesPage";
-import NavHeader from "./Navigation/NavHeader";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
+import HomePage from "./pages/HomePage/HomePage";
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
+import NavHeader from "./components/Navigation/NavHeader";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 
 const App = () => {
   return (
