@@ -28,10 +28,10 @@ const MoviesPage = () => {
       <ul>
       {movies.length > 0 &&
         movies.map((movie) => {
-          return ( <div  key={movie.id}>
+          return ( <div key={movie.id}>
             <li><h2><b>{movie.title}</b></h2>
             <p>{movie.popularity}</p>
-            <Link to={`/${movieId}`}>Details</Link>
+            <Link to={String(movie.id)}>Details</Link>
             </li>
           </div>)
         })}
