@@ -1,10 +1,10 @@
 import axios from "axios";
 const API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWZhYTQwMWMyODBhNTgzZTFmMzE2NGZjMWVkYTg1OSIsInN1YiI6IjY2NmEwMGNlZjM3ZDA2OTRiMmVhMTc3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JVLPpxQfRI2FZQnZBlywo3QUFxCzxHSlUCtx9DFQ-8A";
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export const searchMoviesApi = async (query) => {
-  const {data} = await axios.get(`/search/movie`, {
+  const {data} = await axios.get('/search/movie', {
     params: {
       query,
       language: "en-US",
@@ -14,6 +14,11 @@ export const searchMoviesApi = async (query) => {
       Authorization: `Bearer ${API_TOKEN}`,
     },
   });
-  return data.result;
+  return data.results;
 };
+
+export const searchMovieIdApi = async movieId => 
+    searchMoviesApi(`/movie/${movieId}`);
+    
+
 

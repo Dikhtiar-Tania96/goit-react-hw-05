@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MoviesPage from "./pages/MoviesPage";
 import NavHeader from "./Navigation/NavHeader";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 const App = () => {
   return (
@@ -10,7 +11,8 @@ const App = () => {
       <NavHeader/>
       <Routes>
         <Route path="/" element={<HomePage/>} />
-        <Route path="/movies" element={<MoviesPage/>} />
+        <Route path="/movies" element={<MoviesPage/>}/>
+        <Route path="/movies/:movieId" element={<MovieDetailsPage/>}/>
       </Routes>
     </div>
   

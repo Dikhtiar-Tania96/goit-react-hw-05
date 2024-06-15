@@ -10,7 +10,7 @@ const MoviesPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await searchMoviesApi("cat");
+        const data = await searchMoviesApi("car");
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -23,13 +23,15 @@ const MoviesPage = () => {
 
   return (
     <div>
+      <ul>
       {movies.length > 0 &&
         movies.map((movie) => {
-          <div key={movie.id}>
-            <h2><b>{movie.title}</b></h2>
-            <p>{movie.popularity}</p>
-          </div>;
+          return ( <div  key={movie.id}>
+            <li><h2><b>{movie.title}</b></h2>
+            <p>{movie.popularity}</p></li>
+          </div>)
         })}
+        </ul>
     </div>
   );
 };
