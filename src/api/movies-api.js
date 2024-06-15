@@ -7,12 +7,12 @@ export const searchMoviesApi = async (query) => {
   const {data} = await axios.get(`/search/movie`, {
     params: {
       query,
-      language: "en"
+      language: "en-US",
+      page: 1
         },
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
-  });
-  return data;
+  });git s
 };
 

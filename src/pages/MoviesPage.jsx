@@ -17,8 +17,8 @@ const MoviesPage = () => {
       } finally {
         setLoading(false)
        }
-    };
-    getData();
+    }
+    getData()
   }, []);
 
   return (
