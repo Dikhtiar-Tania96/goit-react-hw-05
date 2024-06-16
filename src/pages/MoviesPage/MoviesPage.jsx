@@ -36,7 +36,8 @@ const MoviesPage = () => {
               <Link to={String(movie.id)}>Details</Link>
             </div>
           )
-        })}</ul>
+        })}
+        </ul>
     </div>
   );
 };

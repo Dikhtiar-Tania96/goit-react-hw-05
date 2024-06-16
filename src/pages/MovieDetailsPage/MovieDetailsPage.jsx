@@ -3,6 +3,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import { searchMovieIdApi } from "../../api/movies-api";
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
+// import axios from "axios";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -25,16 +26,23 @@ const MovieDetailsPage = () => {
     getData()
   }, [movieId]);
 
+  // useEffect(()=>{
+  //   if(!movieId) return 
+  //   const getData = async () => {
+  //     const data = await searchMovieIdApi(movieId);
+  //   }
+  //   getData()
+  // }, [movieId])
+
   return (
     <div>
-      {movie && (
+      {movie && 
         <ul>
           <h2>title: {movie.title}</h2>
           <h4>popularity: {movie.popularity}</h4>
           <p>release date: {movie.release_date}</p>
         </ul>
-      )}
-
+}
       <nav>
         <Link to='Cast'><MovieCast/></Link> 
         <Link to='Reviews'><MovieReviews/></Link> 
