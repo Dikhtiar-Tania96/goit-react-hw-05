@@ -1,15 +1,45 @@
-import { useSearchParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link, useParams} from "react-router-dom";
+import { fetchTrendingMovies } from "../../api/movies-api";
 
 const HomePage = () => {
+  const { movieId } = useParams();
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const [params, setParams] = useSearchParams()
-  console.log('params', params.get('search'))
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const data = await fetchTrendingMovies(movieId || "car");
+        setMovies(data);
+      } catch (error) {
+        setError(true);
+        console.error('Error fetching trending movies:', error)
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <div>
-      <label htmlFor="search">Search by film... </label>
-      <input type="text" id="search"/>
+      {loading && <p>Зачекайте,йде завантаження...</p>}
+      {error && <p>Упс,помилка при завантаженні даних</p>}
+      <ul>
+        {movies.map((movie) => {
+            return (
+              <li key={movie.id}>
+                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+              </li>
+            );
+          })}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
