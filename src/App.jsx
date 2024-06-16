@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage"
 import MovieReviews from "./components/MovieReviews/MovieReviews";
 import MovieCast from "./components/MovieCast/MovieCast";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
           <Route path="Cast" element={<MovieCast/>}/>
           <Route path="Reviews" element={<MovieReviews/>}/>
         </Route>
-        
+        <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     </div>
   

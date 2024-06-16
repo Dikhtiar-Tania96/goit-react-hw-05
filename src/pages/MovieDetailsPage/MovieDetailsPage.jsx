@@ -7,7 +7,7 @@ import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const [movie, setMovies] = useState([]);
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -17,7 +17,7 @@ const MovieDetailsPage = () => {
         setLoading(true);
         setError(false)
         const data = await searchMovieIdApi(movieId);
-        setMovies(data);
+        setMovie(data);
       } catch (error) {
         setError(true);
       } finally {
@@ -30,6 +30,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
+      <Link to='/movies'>Go back...</Link>
       {movie && 
         <ul>
           <h2>title: {movie.title}</h2>

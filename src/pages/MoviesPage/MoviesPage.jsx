@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { searchMoviesApi } from "../../api/movies-api";
 
 const MoviesPage = () => {
@@ -8,12 +8,14 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+
+
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
-        setError(false)
-        const data = await searchMoviesApi(movieId || 'car');
+        setError(false);
+        const data = await searchMoviesApi(movieId || "car");
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -24,22 +26,29 @@ const MoviesPage = () => {
     getData();
   }, [movieId]);
 
+ 
+
   return (
     <div>
-     {/* {loading && <p>Завантаження...</p>}
+      <label htmlFor="filter">Search by film... </label>
+      <input type="text" id="filter" />
+
+      {/* {loading && <p>Завантаження...</p>}
       {error && <p>Помилка при завантаженні даних</p>} */}
-       <ul> 
-      {movies.length > 0 &&
-        movies.map((movie) => {
-          return (
-            <li key={movie.id}>
-              <h2><b>{movie.title}</b></h2>
-              <p>{movie.popularity}</p>
-              <Link to={String(movie.id)}>Details</Link>
-            </li>
-          )
-        })}
-        </ul>
+      <ul>
+        {movies.length > 0 &&
+          movies.map((movie) => {
+            return (
+              <li key={movie.id}>
+                <h2>
+                  <b>{movie.title}</b>
+                </h2>
+                <p>{movie.popularity}</p>
+                <Link to={String(movie.id)}>Details</Link>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 };
