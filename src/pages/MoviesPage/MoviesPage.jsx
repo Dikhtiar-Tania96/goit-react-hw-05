@@ -12,7 +12,7 @@ const MoviesPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await searchMoviesApi("car ");
+        const data = await searchMoviesApi('car');
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -31,8 +31,8 @@ const MoviesPage = () => {
         movies.map((movie) => {
           return (
             <div key={movie.id}>
-              <li><h2><b>{movie.title}</b></h2></li>
-              <p>{movie.popularity}</p>
+              <li><h2><b>{movie.title}</b></h2>
+              <p>{movie.popularity}</p></li>
               <Link to={String(movie.id)}>Details</Link>
             </div>
           )

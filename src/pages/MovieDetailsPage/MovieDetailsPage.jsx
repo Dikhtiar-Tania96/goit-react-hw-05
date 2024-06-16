@@ -21,8 +21,8 @@ const MovieDetailsPage = () => {
       } finally {
         setLoading(false);
       }
-    };
-    getData();
+    }
+    getData()
   }, [movieId]);
 
   return (
@@ -39,7 +39,6 @@ const MovieDetailsPage = () => {
         <Link to='Cast'><MovieCast/></Link> 
         <Link to='Reviews'><MovieReviews/></Link> 
       </nav>
-
       <Outlet/>
     </div>
   );
