@@ -1,9 +1,10 @@
-// import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import NavHeader from "./components/Navigation/NavHeader";
-import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
+import HomePage from "./pages/HomePage/HomePage";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage"
+import MovieReviews from "./components/MovieReviews/MovieReviews";
+import MovieCast from "./components/MovieCast/MovieCast";
 
 const App = () => {
   return (
@@ -12,7 +13,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/movies" element={<MoviesPage/>}/>
-        <Route path="/movies/:movieId" element={<MovieDetailsPage/>}/>
+        <Route path="/movies/:movieId" element={<MovieDetailsPage/>}>
+          <Route path="Cast" element={<MovieCast/>}/>
+          <Route path="Reviews" element={<MovieReviews/>}/>
+        </Route>
       </Routes>
     </div>
   
