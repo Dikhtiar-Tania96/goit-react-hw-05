@@ -13,7 +13,7 @@ const HomePage = () => {
       try {
         setLoading(true);
         setError(false);
-        const data = await fetchTrendingMovies(movieId || "car");
+        const data = await fetchTrendingMovies("car");
         setMovies(data);
       } catch (error) {
         setError(true);
