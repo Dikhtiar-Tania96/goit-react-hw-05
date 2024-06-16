@@ -7,7 +7,7 @@ import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -15,8 +15,9 @@ const MovieDetailsPage = () => {
     const getData = async () => {
       try {
         setLoading(true);
+        setError(false)
         const data = await searchMovieIdApi(movieId);
-        setMovie(data);
+        setMovies(data);
       } catch (error) {
         setError(true);
       } finally {
@@ -26,13 +27,6 @@ const MovieDetailsPage = () => {
     getData()
   }, [movieId]);
 
-  // useEffect(()=>{
-  //   if(!movieId) return 
-  //   const getData = async () => {
-  //     const data = await searchMovieIdApi(movieId);
-  //   }
-  //   getData()
-  // }, [movieId])
 
   return (
     <div>

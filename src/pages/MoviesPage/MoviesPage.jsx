@@ -26,8 +26,8 @@ const MoviesPage = () => {
 
   return (
     <div>
-     {loading && <p>Завантаження...</p>}
-      {error && <p>Помилка при завантаженні даних</p>}
+     {/* {loading && <p>Завантаження...</p>}
+      {error && <p>Помилка при завантаженні даних</p>} */}
        <ul> 
       {movies.length > 0 &&
         movies.map((movie) => {
