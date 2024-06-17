@@ -33,7 +33,11 @@ const HomePage = () => {
         {movies.map((movie) => {
             return (
               <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                <Link to={`/movies/${movie.id}`}>{movie.title}                
+                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+                <p>{movie.release_date}</p>
+                <p>{movie.vote_count}</p>
+                </Link>
               </li>
             );
           })}

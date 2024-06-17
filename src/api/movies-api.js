@@ -67,7 +67,7 @@ return data.results
       return data;
     } catch (error) {
       console.error('API request error:', error)
-  throw error;
+  throw error; //деталі фільму
     }
     // const response = await axios.get(`/movie/${movieId}`);
     // return response.data;
