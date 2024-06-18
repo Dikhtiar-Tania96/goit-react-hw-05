@@ -2,6 +2,7 @@ import{ useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../../Loader/Loader';
+import css from './MovieDetailsPage.module.css'
 
 const baseURL = 'https://api.themoviedb.org/3'; // Заміни на свій baseURL
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWZhYTQwMWMyODBhNTgzZTFmMzE2NGZjMWVkYTg1OSIsInN1YiI6IjY2NmEwMGNlZjM3ZDA2OTRiMmVhMTc3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JVLPpxQfRI2FZQnZBlywo3QUFxCzxHSlUCtx9DFQ-8A'; // Заміни на свій API_TOKEN
@@ -47,17 +48,17 @@ const MovieDetailsPage = () => {
         <div>
            {loading && <Loader/>} 
             {movie && (
-                <div>
-                  <div>
-                    <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
-                    <h1>{movie.title}</h1>
+                <div>                    
+                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+                  <div className={css.movieDetailsTitle}>
+                    <h1 className={css.titleMovie}>{movie.title}</h1>
                     <p>{movie.overview}</p>
                     <p><b>Release Date:</b> {movie.release_date}</p>
                     <p><b>Rating:</b> {movie.vote_average}</p>
                     </div>
-                    <div>
-                      <p>Additional information: </p>
-                    <ul>
+                    <div className={css.addInfoMovie}>
+                      <p className={css.addTitleMovie}>Additional information: </p>
+                    <ul className={css.listMovie}>
                       <li><Link to='Cast'>Cast</Link></li> 
                       <li><Link to='Reviews'>Reviews</Link></li>
                     </ul> 
