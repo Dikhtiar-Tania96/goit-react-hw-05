@@ -38,9 +38,8 @@ const HomePage = () => {
               <li key={movie.id} className={css.itemFilms}>
                 <Link to={`/movies/${movie.id}`} className={css.linkFilms}>
                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
-                <h2>{movie.title} </h2>               
-                <p>{movie.release_date}</p>
-                <p>{movie.vote_count}</p>
+                <h2 className={css.nameFilm}>{movie.title} </h2>               
+                <p className={css.nameFilmText}>{movie.release_date}</p>
                 </Link>
               </li>
             );
