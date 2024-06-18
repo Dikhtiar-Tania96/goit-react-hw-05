@@ -1,0 +1,19 @@
+.listFilms{
+list-style: none;
+padding: 0;
+}   
+
+.itemFilms{
+margin: 10px;
+border: 2px solid purple;
+}
+
+.linkFilms{
+    font-size: 14px;
+    color: purple;
+}
+
+.titlePage{
+    font-size: 36px;
+    border: ;
+}
