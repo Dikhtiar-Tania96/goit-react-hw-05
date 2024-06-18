@@ -1,8 +1,6 @@
 import{ useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
-import MovieCast from '../../components/MovieCast/MovieCast';
-import MovieReviews from '../../components/MovieReviews/MovieReviews';
 
 const baseURL = 'https://api.themoviedb.org/3'; // Заміни на свій baseURL
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWZhYTQwMWMyODBhNTgzZTFmMzE2NGZjMWVkYTg1OSIsInN1YiI6IjY2NmEwMGNlZjM3ZDA2OTRiMmVhMTc3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JVLPpxQfRI2FZQnZBlywo3QUFxCzxHSlUCtx9DFQ-8A'; // Заміни на свій API_TOKEN
