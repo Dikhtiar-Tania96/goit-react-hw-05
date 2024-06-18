@@ -1,9 +1,19 @@
 .link{
     text-decoration: none;
     color: black;
+    padding-left: 20px;
+    font-size: 26px;
+    color: purple;
 }
 
 .isActive{
     text-decoration: underline;
     color: red;
 }
+
+/* .navLink{
+   background-color:plum;
+   padding: 10px;
+   justify-content: center;
+   text-align: center;
+} */

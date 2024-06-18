@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams} from "react-router-dom";
 import { fetchTrendingMovies } from "../../api/movies-api";
+import Loader from "../../Loader/Loader";
 
 const HomePage = () => {
   const { movieId } = useParams();
@@ -13,7 +14,7 @@ const HomePage = () => {
       try {
         setLoading(true);
         setError(false);
-        const data = await fetchTrendingMovies("car");
+        const data = await fetchTrendingMovies("");
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -27,7 +28,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {loading && <p>Зачекайте,йде завантаження...</p>}
+      {loading && <p><Loader/></p>}
       {error && <p>Упс,помилка при завантаженні даних</p>}
       <ul>
         {movies.map((movie) => {

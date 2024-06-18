@@ -8,7 +8,7 @@ const getClassNames = ({isActive})=>{
 
 const NavHeader = () => {
   return (
-    <nav>
+    <nav className={css.navLink}>
       <NavLink className={getClassNames} to="/">
         Home
       </NavLink>
