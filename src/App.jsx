@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import NavHeader from "./components/Navigation/NavHeader";
 import { Suspense, lazy } from "react";
+import Loader from "./Loader/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
@@ -8,15 +9,14 @@ const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage/MovieDetail
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
-const MovieReviews = lazy(() =>
-  import("./components/MovieReviews/MovieReviews"));
+const MovieReviews = lazy(() => import("./components/MovieReviews/MovieReviews"));
 
 const App = () => {
   return (
     <div>
-      <Routes>
+        <Suspense fallback={<div>Loading</div> && <Loader/>}>
         <NavHeader />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
@@ -24,8 +24,9 @@ const App = () => {
           <Route path="Reviews" element={<MovieReviews />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
-        </Suspense>
-      </Routes>
+      </Routes>        
+      </Suspense>
+
     </div>
   );
 };
