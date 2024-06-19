@@ -13,93 +13,86 @@ export const searchMoviesApi = async (query) => {
         },
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
-    },
-  });
+    }});
   return data.results;
   } catch (error) {
     console.log('API request error:', error);
     throw error;
-  }
-};
-////////////////////////////////////////////////////////////////////////////////////////////
+  }};
+
+
+
 export const fetchTrendingMovies = async () => {
   try {
     const {data} = await axios.get(`${baseURL}/trending/movie/day`, {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
-      }
-    });
+      }});
 return data.results
   } catch (error) {
     console.error('API request error:', error)
     throw error;  
-  }
-  };
+  }};
 
-    export const searchMovieIdApi = async movieId => 
+
+  export const searchMovieIdApi = async movieId => 
     fetchTrendingMovies(`/movie/${movieId}`);
-///////////////////////////////////////////////
 
+
+    
     
   export const searchMovies = async (query) => {
     try {
       const {data} = await axios.get(`${baseURL}/search/movie?query=${query}`, {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
-        }
-      });
+        }});
       return data.results;
     } catch (error) {
       console.error('API request error:', error)
-  throw error;
-    }
-    // const response = await axios.get(`/search/movie?query=${query}`);
-    // return response.data.results;
-  };
-  ///////////////////////////////////////////////////////////////////
+  throw error}};
+
+
+
+
   export const fetchMovieDetails = async (movieId) => {
     try {
       const {data} = await axios.get(`${baseURL}/movie/${movieId}`, {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
-        }
-      });
+        }});
       return data;
     } catch (error) {
       console.error('API request error:', error)
-  throw error; //деталі фільму
-    }
-    // const response = await axios.get(`/movie/${movieId}`);
-    // return response.data;
-  };
-  /////////////////////////////////////////////////////////////////////////
+  throw error}};
+
+
+
+
+
+
   export const fetchMovieCredits = async (movieId) => {
     try {
       const {data} = await axios.get(`${baseURL}/movie/${movieId}/credits`, {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
-        }
-      });
+        }});
       return data.cast;
     } catch (error) {
       console.error('API request error:', error)
   throw error;
-    }
-    // const response = await axios.get(`/movie/${movieId}/credits`);
-    // return response.data.cast;
-  };
-  
-  /////////////////////////////////////////////////////////////////////////////////
-  export const fetchMovieReviews = async (movieId) => {
+    }};
+
+
+
+   export const fetchMovieReviews = async (movieId) => {
     try {
       const {data} = await axios.get(`${baseURL}/movie/${movieId}/reviews`, {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
-        }
-      });
+        }});
       return data.results;
     } catch (error) {
       console.error('API request error:', error)
   throw error;
-    }
-  };
+    }};
