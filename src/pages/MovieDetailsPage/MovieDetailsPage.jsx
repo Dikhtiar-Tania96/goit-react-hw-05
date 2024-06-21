@@ -1,12 +1,10 @@
-import{ useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../../Loader/Loader';
 import css from './MovieDetailsPage.module.css'
-
 const baseURL = 'https://api.themoviedb.org/3'; // Заміни на свій baseURL
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWZhYTQwMWMyODBhNTgzZTFmMzE2NGZjMWVkYTg1OSIsInN1YiI6IjY2NmEwMGNlZjM3ZDA2OTRiMmVhMTc3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JVLPpxQfRI2FZQnZBlywo3QUFxCzxHSlUCtx9DFQ-8A'; // Заміни на свій API_TOKEN
-
 export const fetchMovieDetails = async (movieId) => {
     try {
         const { data } = await axios.get(`${baseURL}/movie/${movieId}`, {
@@ -20,13 +18,13 @@ export const fetchMovieDetails = async (movieId) => {
         throw error;
     }
 };
-
 const MovieDetailsPage = () => {
     const { movieId } = useParams();
+    const location = useLocation();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const containerRef = useRef(null);
     useEffect(() => {
         const getMovieDetails = async () => {
             try {
@@ -38,91 +36,37 @@ const MovieDetailsPage = () => {
                 setLoading(false);
             }
         };
-
         getMovieDetails();
     }, [movieId]);
-
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [movie]);
     if (error) return <p>Error loading movie details: {error.message}</p>;
-
     return (
-        <div>
-           {loading && <Loader/>} 
+        <div ref={containerRef}>
+            {loading && <Loader />}
             {movie && (
-                <div>                    
+                <div>
                     <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
-                  <div className={css.movieDetailsTitle}>
-                    <h1 className={css.titleMovie}>{movie.title}</h1>
-                    <p>{movie.overview}</p>
-                    <p><b>Release Date:</b> {movie.release_date}</p>
-                    <p><b>Rating:</b> {movie.vote_average}</p>
+                    <div className={css.movieDetailsTitle}>
+                        <h1 className={css.titleMovie}>{movie.title}</h1>
+                        <p>{movie.overview}</p>
+                        <p><b>Release Date:</b> {movie.release_date}</p>
+                        <p><b>Rating:</b> {movie.vote_average}</p>
                     </div>
                     <div className={css.addInfoMovie}>
-                      <p className={css.addTitleMovie}>Additional information: </p>
-                    <ul className={css.listMovie}>
-                      <li><Link to='Cast'>Cast</Link></li> 
-                      <li><Link to='Reviews'>Reviews</Link></li>
-                    </ul> 
-                    <Outlet/>
+                        <p className={css.addTitleMovie}>Additional information: </p>
+                        <ul className={css.listMovie}>
+                            <li><Link to='Cast' state={{ from: location }}>Cast</Link></li>
+                            <li><Link to='Reviews' state={{ from: location }}>Reviews</Link></li>
+                        </ul>
+                        <Outlet />
                     </div>
-
                 </div>
             )}
         </div>
-
-       
     );
 };
-
 export default MovieDetailsPage;
-
-
-
-// import { useEffect, useState } from "react";
-// import { Link, Outlet, useParams } from "react-router-dom";
-// import { searchMovieIdApi } from "../../api/movies-api";
-// import MovieCast from "../../components/MovieCast/MovieCast";
-// import MovieReviews from "../../components/MovieReviews/MovieReviews";
-
-// const MovieDetailsPage = () => {
-//   const { movieId } = useParams();
-//   const [movie, setMovie] = useState(null);
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(false);
-
-//   useEffect(() => {
-//     const getData = async () => {
-//       try {
-//         setLoading(true);
-//         setError(false)
-//         const data = await searchMovieIdApi(movieId);
-//         setMovie(data);
-//       } catch (error) {
-//         setError(true);
-//       } finally {
-//         setLoading(false);
-//       }
-//     }
-//     getData()
-//   }, [movieId]);
-
-
-//   return (
-//     <div>
-//       <Link to='/movies'>Go back...</Link>
-//       {movie && 
-//         <ul>
-//           <h2>title: {movie.title}</h2>
-//           <h4>popularity: {movie.popularity}</h4>
-//           <p>release date: {movie.release_date}</p>
-//         </ul>
-// }
-//       <nav>
-//         <Link to='Cast'><MovieCast/></Link> 
-//         <Link to='Reviews'><MovieReviews/></Link> 
-//       </nav>
-//       <Outlet/>
-//     </div>
-//   );
-// };
-
-// export default MovieDetailsPage;
