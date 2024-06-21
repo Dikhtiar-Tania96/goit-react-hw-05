@@ -25,6 +25,7 @@ const MovieDetailsPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const containerRef = useRef(null);
+    const backLinkHref = location.state?.from ?? '/movies'
     useEffect(() => {
         const getMovieDetails = async () => {
             try {
@@ -49,6 +50,7 @@ const MovieDetailsPage = () => {
             {loading && <Loader />}
             {movie && (
                 <div>
+                 <Link to={backLinkHref} className={css.backBtn}>Go back</Link>
                     <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                     <div className={css.movieDetailsTitle}>
                         <h1 className={css.titleMovie}>{movie.title}</h1>
